@@ -105,19 +105,57 @@
 
   /* ---------- Forms ---------- */
   function initForms() {
+    var ENDPOINT = "https://inquiry-worker.wangxy1918.workers.dev/";
     var forms = document.querySelectorAll("form[data-ajax]");
     for (var i = 0; i < forms.length; i++) {
       forms[i].addEventListener("submit", function (e) {
         e.preventDefault();
-        var name = this.querySelector('[name="name"]');
+        var form = this;
+        var isZh = document.documentElement.getAttribute("lang") === "zh-CN";
+        var name = form.querySelector('[name="name"]');
+        var email = form.querySelector('[name="email"]');
         if (name && !name.value.trim()) {
-          showToast(document.getElementById("langToggle") && document.documentElement.getAttribute("lang") === "zh-CN" ? "请填写您的姓名" : "Please fill in your name");
+          showToast(isZh ? "请填写您的姓名" : "Please fill in your name");
           name.focus();
           return;
         }
-        this.reset();
-        closeModal();
-        showToast(document.documentElement.getAttribute("lang") === "zh-CN" ? "询盘已提交，我们会尽快与您联系" : "Inquiry submitted — our team will contact you shortly");
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+          showToast(isZh ? "请填写有效的邮箱地址" : "Please enter a valid email address");
+          email.focus();
+          return;
+        }
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) { btn.disabled = true; btn.textContent = isZh ? "发送中…" : "Sending…"; }
+
+        var productEl = form.querySelector('[name="product"]');
+        var product = productEl && productEl.options && productEl.options[productEl.selectedIndex]
+          ? productEl.options[productEl.selectedIndex].textContent.trim() : "";
+        var message = form.querySelector('[name="message"]');
+        fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: (name && name.value.trim()) || "",
+            email: (email && email.value.trim()) || "",
+            product: product,
+            message: (message && message.value.trim()) || "",
+            page: location.pathname
+          })
+        }).then(function (r) {
+          return r.json().catch(function () { return { ok: false }; });
+        }).then(function (data) {
+          if (btn) { btn.disabled = false; btn.textContent = isZh ? "提交询盘" : "Send Inquiry"; }
+          if (data && data.ok) {
+            form.reset();
+            closeModal();
+            showToast(isZh ? "询盘已提交，我们会尽快与您联系" : "Inquiry submitted — our team will contact you shortly");
+          } else {
+            showToast(isZh ? "提交失败，请稍后重试，或直接邮件联系我们" : "Submission failed — please try again or email us directly");
+          }
+        }).catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = isZh ? "提交询盘" : "Send Inquiry"; }
+          showToast(isZh ? "网络异常，请稍后重试" : "Network error — please try again");
+        });
       });
     }
   }

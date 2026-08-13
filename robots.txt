@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /inquiry-log.html
 
-Sitemap: https://www.yusheng-tech.com/sitemap.xml
+Sitemap: https://yusheng-intelligent.pages.dev/sitemap.xml
