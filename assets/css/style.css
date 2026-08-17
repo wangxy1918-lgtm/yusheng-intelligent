@@ -149,6 +149,8 @@ h3 { font-size: 21px; text-transform: uppercase; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-text strong { font-family: var(--font-display); font-size: 20px; letter-spacing: .05em; text-transform: uppercase; }
 .brand-text small { color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.brand-logo { height: 44px; width: auto; display: block; }
+.footer-brand .brand-logo { height: 56px; }
 
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a {
