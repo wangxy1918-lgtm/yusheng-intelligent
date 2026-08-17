@@ -114,6 +114,8 @@
         var isZh = document.documentElement.getAttribute("lang") === "zh-CN";
         var name = form.querySelector('[name="name"]');
         var email = form.querySelector('[name="email"]');
+        var company = form.querySelector('[name="company"]');
+        var phone = form.querySelector('[name="phone"]');
         if (name && !name.value.trim()) {
           showToast(isZh ? "请填写您的姓名" : "Please fill in your name");
           name.focus();
@@ -137,6 +139,8 @@
           body: JSON.stringify({
             name: (name && name.value.trim()) || "",
             email: (email && email.value.trim()) || "",
+            company: (company && company.value.trim()) || "",
+            phone: (phone && phone.value.trim()) || "",
             product: product,
             message: (message && message.value.trim()) || "",
             page: location.pathname

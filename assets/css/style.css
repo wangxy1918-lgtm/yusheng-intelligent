@@ -259,7 +259,8 @@ h3 { font-size: 21px; text-transform: uppercase; }
 .hero-visual svg { position: relative; z-index: 1; width: 86%; height: auto; }
 .hero-visual .img-layer {
   position: absolute; inset: 0; z-index: 2;
-  background-size: cover; background-position: center;
+  background-size: contain; background-position: center; background-repeat: no-repeat;
+  background-color: #e9f2fc; /* 与 visual-frame 渐变底色衔接，遮住底层 SVG 底纹 */
   opacity: 0;
   transition: opacity .6s;
 }
