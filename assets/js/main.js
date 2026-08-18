@@ -200,6 +200,15 @@
     if (y) y.textContent = new Date().getFullYear();
   }
 
+  /* ---------- Visitor tracking beacon ---------- */
+  function trackVisit() {
+    try {
+      if (/inquiry-log/i.test(location.pathname)) return; // 后台页不计入公开访客数
+      new Image().src = "https://inquiry-worker.wangxy1918.workers.dev/api/track?page=" +
+        encodeURIComponent(location.pathname);
+    } catch (e) { /* 埋点失败不影响页面 */ }
+  }
+
   /* ---------- Image hooks (backgrounds) ---------- */
   function initImages() {
     var cards = document.querySelectorAll("[data-img]");
@@ -226,5 +235,6 @@
     initReveal();
     initYear();
     initImages();
+    trackVisit();
   });
 })();

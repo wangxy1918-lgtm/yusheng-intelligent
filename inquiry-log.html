@@ -29,6 +29,10 @@
     .inquiry-gate .btn { margin-top: 16px; width: 100%; justify-content: center; }
     .inq-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px; }
     .inq-count { font-size: 14px; color: var(--muted); }
+    .inq-stats { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+    .stat-chip { display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 18px; border-radius: 10px; background: rgba(46, 134, 255, .07); border: 1px solid rgba(46, 134, 255, .16); }
+    .stat-chip b { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .stat-chip em { font-style: normal; font-weight: 700; font-size: 22px; color: var(--brand, #2e86ff); }
     .inq-table-wrap { overflow-x: auto; border: 1px solid rgba(46, 134, 255, .16); border-radius: 12px; background: var(--card, #fff); }
     table.inq { width: 100%; border-collapse: collapse; min-width: 820px; }
     table.inq th, table.inq td { padding: 12px 14px; text-align: left; border-bottom: 1px solid rgba(46, 134, 255, .12); font-size: 14px; vertical-align: top; }
@@ -101,6 +105,10 @@
   <section class="section alt">
     <div class="container">
       <div id="log" style="display:none">
+        <div class="inq-stats" id="inqStats" style="display:none">
+          <span class="stat-chip"><b data-en="Total visits" data-zh="总访问">Total visits</b><em id="statTotal">0</em></span>
+          <span class="stat-chip"><b data-en="Today" data-zh="今日">Today</b><em id="statToday">0</em></span>
+        </div>
         <div class="inq-toolbar">
           <div class="inq-count" id="inqCount">0</div>
           <button id="refreshBtn" class="btn btn-ghost btn-sm" data-en="Refresh" data-zh="刷新">Refresh</button>

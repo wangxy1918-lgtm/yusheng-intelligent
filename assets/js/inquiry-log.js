@@ -6,6 +6,7 @@
   "use strict";
 
   var API = "https://inquiry-worker.wangxy1918.workers.dev/api/list";
+  var STATS_API = "https://inquiry-worker.wangxy1918.workers.dev/api/stats";
   var gate = document.getElementById("gate");
   var log = document.getElementById("log");
   var keyInput = document.getElementById("keyInput");
@@ -41,11 +42,26 @@
         gate.style.display = "none";
         log.style.display = "block";
         render(data.inquiries);
+        loadStats(key);
       })
       .catch(function () {
         loadBtn.disabled = false;
         loadBtn.textContent = isZh() ? "查看询盘" : "Load Inquiries";
         gateMsg.textContent = isZh() ? "网络异常，请重试" : "Network error, please retry";
+      });
+  }
+
+  function loadStats(key) {
+    var statsEl = document.getElementById("inqStats");
+    if (!statsEl) return;
+    fetch(STATS_API + "?key=" + encodeURIComponent(key))
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      .then(function (d) {
+        if (d && d.ok) {
+          document.getElementById("statTotal").textContent = d.total;
+          document.getElementById("statToday").textContent = d.today;
+          statsEl.style.display = "flex";
+        }
       });
   }
 
