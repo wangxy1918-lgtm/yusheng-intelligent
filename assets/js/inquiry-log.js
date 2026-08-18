@@ -59,6 +59,8 @@
         "<td class='time'>" + esc(t) + "</td>" +
         "<td>" + esc(r.name) + "</td>" +
         "<td><a href='mailto:" + esc(r.email) + "'>" + esc(r.email) + "</a></td>" +
+        "<td>" + esc(r.company) + "</td>" +
+        "<td>" + esc(r.phone) + "</td>" +
         "<td>" + esc(r.product) + "</td>" +
         "<td class='msg'>" + esc(r.message) + "</td>" +
         "<td>" + esc(r.page) + "</td>" +
