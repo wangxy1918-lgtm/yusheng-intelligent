@@ -51,6 +51,8 @@
     var navToggle = document.querySelector(".nav-toggle");
     var nav = document.querySelector(".nav");
 
+    if (!header) return; // 页面没有页头就跳过，避免打断后面的 modal / 表单 / reveal 初始化
+
     var onScroll = function () {
       if (window.scrollY > 12) header.classList.add("scrolled");
       else header.classList.remove("scrolled");
@@ -130,8 +132,11 @@
         if (btn) { btn.disabled = true; btn.textContent = isZh ? "发送中…" : "Sending…"; }
 
         var productEl = form.querySelector('[name="product"]');
-        var product = productEl && productEl.options && productEl.options[productEl.selectedIndex]
-          ? productEl.options[productEl.selectedIndex].textContent.trim() : "";
+        var productOpt = productEl && productEl.options ? productEl.options[productEl.selectedIndex] : null;
+        // 取 data-en 而不是显示文案：中文界面提交 "CNC 数控车床"、英文界面提交 "CNC Lathe"，
+        // 同一台机器会在后台留下两条不同的记录
+        var product = productOpt
+          ? (productOpt.getAttribute("data-en") || productOpt.textContent.trim()) : "";
         var message = form.querySelector('[name="message"]');
         fetch(ENDPOINT, {
           method: "POST",
@@ -209,23 +214,6 @@
     } catch (e) { /* 埋点失败不影响页面 */ }
   }
 
-  /* ---------- Image hooks (backgrounds) ---------- */
-  function initImages() {
-    var cards = document.querySelectorAll("[data-img]");
-    for (var i = 0; i < cards.length; i++) {
-      var f = cards[i].getAttribute("data-img");
-      if (f) cards[i].style.backgroundImage = "url('assets/img/" + f + "')";
-    }
-    var hero = document.querySelector("[data-hero-img]");
-    if (hero) {
-      var hf = hero.getAttribute("data-hero-img");
-      if (hf) {
-        hero.style.backgroundImage = "url('assets/img/" + hf + "')";
-        hero.classList.add("show");
-      }
-    }
-  }
-
   /* ---------- Boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     initLang();
@@ -234,7 +222,6 @@
     initForms();
     initReveal();
     initYear();
-    initImages();
     trackVisit();
   });
 })();

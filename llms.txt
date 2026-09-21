@@ -1,0 +1,32 @@
+# Yusheng Intelligent Technology
+
+> Manufacturer of intelligent precision machining equipment: CNC lathes, turn-mill
+> centres, drilling and tapping centres, automatic load/unload systems, robots and
+> custom special-purpose machines. Built for production turning and milling of shafts,
+> discs, housings and complex parts in automotive, electronics, mould, aerospace and
+> medical applications. Site available in English and Chinese.
+
+## Products
+
+- [CNC Lathes](https://yusheng-intelligent.pages.dev/product-cnc.html): High-rigidity slant-bed turning centres for shafts, discs and complex parts, with fast turret indexing and optional bar feed.
+- [Turn-Mill Centres](https://yusheng-intelligent.pages.dev/product-turnmill.html): Multi-axis machines that mill, drill and turn in one set-up — one clamping, complete machining, tighter tolerances.
+- [Drilling & Tapping Centres](https://yusheng-intelligent.pages.dev/product-drilling.html): High-speed machining centres for batch drilling, tapping and light milling on 3C, electronics and connector parts.
+- [Auto Load/Unload Systems](https://yusheng-intelligent.pages.dev/product-auto.html): Gantry loaders, pallet changers and bar feeders for unmanned shifts and higher machine utilization.
+- [Robots & Manipulators](https://yusheng-intelligent.pages.dev/product-robot.html): Articulated and gantry robots for loading, unloading, palletizing and in-line material handling.
+- [Custom Special Machines](https://yusheng-intelligent.pages.dev/product-custom.html): Dedicated machines engineered around a specific part, process and floor layout.
+- [All products](https://yusheng-intelligent.pages.dev/products.html): Overview of the six product families.
+
+## Applications
+
+- [Applications](https://yusheng-intelligent.pages.dev/applications.html): How the machines are applied in automotive, electronics, mould and hardware, aerospace and medical device manufacturing.
+
+## Capability and trust
+
+- [Solutions](https://yusheng-intelligent.pages.dev/solutions.html): Turnkey machining cells and custom automation built around customer parts.
+- [Quality](https://yusheng-intelligent.pages.dev/quality.html): Inspection and quality-control process, including coordinate measuring machine verification.
+- [About](https://yusheng-intelligent.pages.dev/about.html): Company background and manufacturing facility.
+- [Contact](https://yusheng-intelligent.pages.dev/contact.html): Inquiry form and contact details.
+
+## Optional
+
+- [Sitemap](https://yusheng-intelligent.pages.dev/sitemap.xml)

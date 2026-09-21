@@ -1,0 +1,16 @@
+# 环境变量与密钥 —— 绝不入库
+.env
+.env.*
+*.key
+*.pem
+
+# Wrangler / Cloudflare 本地状态（可能含账号信息）
+.wrangler/
+
+# 依赖与构建产物
+node_modules/
+
+# 操作系统垃圾文件
+Thumbs.db
+desktop.ini
+.DS_Store
